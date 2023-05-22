@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] float attackRange;
 
     void Start()
     {
@@ -13,6 +14,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawLine(transform.position, player.transform.position);
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        if (distance > attackRange) Debug.DrawLine(transform.position, player.transform.position);
+        else Debug.DrawLine(transform.position, player.transform.position, Color.red);
     }
 }
